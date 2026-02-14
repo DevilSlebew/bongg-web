@@ -71,13 +71,16 @@ export default function About() {
               <CardTitle>Contact</CardTitle>
             </CardHeader>
             <CardContent className="text-zinc-400">
-              <p>
+              <p className="text-sm text-zinc-400">
                 Want to work together or just chat about tech? Feel free to reach out!
               </p>
               <div className="mt-4 space-y-2">
                 <p>
                   <span className="font-semibold text-foreground">Email:</span>{" "}
-                  bonggxz@example.com
+                  <a href="mailto:bonggxz@example.com" className="text-cyan-500 hover:underline">
+                    bonggxz@example.com
+                  </a>
+                  {" "}(Update this in the About page)
                 </p>
                 <p>
                   <span className="font-semibold text-foreground">GitHub:</span>{" "}

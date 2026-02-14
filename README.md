@@ -236,10 +236,14 @@ The application is configured to run efficiently on a 2GB RAM VPS:
 
 ## 🔐 Environment Variables
 
-| Variable | Description | Required |
-|----------|-------------|----------|
-| `DATABASE_URL` | MongoDB Atlas connection string | Yes |
-| `SESSION_SECRET` | Secret key for session encryption | Yes |
+| Variable | Description | Required | Default |
+|----------|-------------|----------|---------|
+| `DATABASE_URL` | MongoDB Atlas connection string | Yes | - |
+| `SESSION_SECRET` | Secret key for session encryption | Yes | - |
+| `WHATSAPP_NUMBER` | WhatsApp number for contact (without +) | No | 6281234567890 |
+| `CONTACT_EMAIL` | Contact email address | No | bonggxz@example.com |
+
+**Important:** Update the WhatsApp number and email address to your actual contact information.
 
 ## 🎨 Design System
 

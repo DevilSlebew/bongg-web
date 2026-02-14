@@ -48,7 +48,7 @@ export function Hero() {
               <Link to="/portfolio">View Work</Link>
             </Button>
             <Button asChild size="lg" variant="outline">
-              <a href="https://wa.me/6281234567890" target="_blank" rel="noopener noreferrer">
+              <a href={`https://wa.me/${process.env.WHATSAPP_NUMBER || '6281234567890'}`} target="_blank" rel="noopener noreferrer">
                 Contact Me
               </a>
             </Button>

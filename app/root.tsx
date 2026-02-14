@@ -4,8 +4,10 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useLoaderData,
 } from "@remix-run/react";
-import type { LinksFunction } from "@remix-run/node";
+import type { LinksFunction, LoaderFunctionArgs } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import stylesheet from "~/tailwind.css?url";
 import { Navbar } from "./components/layout/navbar";
 import { Footer } from "./components/layout/footer";
@@ -29,7 +31,18 @@ export const links: LinksFunction = () => [
   },
 ];
 
+export async function loader({ request }: LoaderFunctionArgs) {
+  return json({
+    ENV: {
+      WHATSAPP_NUMBER: process.env.WHATSAPP_NUMBER || "6281234567890",
+      CONTACT_EMAIL: process.env.CONTACT_EMAIL || "bonggxz@example.com",
+    },
+  });
+}
+
 export function Layout({ children }: { children: React.ReactNode }) {
+  const data = useLoaderData<typeof loader>();
+  
   return (
     <html lang="en" className="dark">
       <head>
@@ -46,6 +59,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
           <Footer />
         </div>
         <ScrollRestoration />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.ENV = ${JSON.stringify(data?.ENV || {})}`,
+          }}
+        />
         <Scripts />
       </body>
     </html>

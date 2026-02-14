@@ -23,8 +23,11 @@ export function ProductCard({ product }: ProductCardProps) {
   const whatsappMessage = encodeURIComponent(
     `Hello BonggXz, I want to buy ${product.name} (${formatPrice(product.price)}). Here is my order details:`
   );
+  const defaultWhatsappNumber = typeof window !== 'undefined' 
+    ? (window as any).ENV?.WHATSAPP_NUMBER || '6281234567890'
+    : '6281234567890';
   const whatsappLink =
-    product.whatsappUrl || `https://wa.me/6281234567890?text=${whatsappMessage}`;
+    product.whatsappUrl || `https://wa.me/${defaultWhatsappNumber}?text=${whatsappMessage}`;
 
   return (
     <Card3D className="h-full">

@@ -2,12 +2,13 @@ import type { MetaFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useLoaderData, Link } from "@remix-run/react";
 import { prisma } from "~/lib/db.server";
-import { MarkdownContent } from "~/lib/markdown.server";
 import { Badge } from "~/components/ui/badge";
 import { Button } from "~/components/ui/button";
 import { Card } from "~/components/ui/card";
 import { ArrowLeft, Calendar, Share2 } from "lucide-react";
 import { formatDate } from "~/lib/utils";
+import ReactMarkdown from "react-markdown";
+import rehypeHighlight from "rehype-highlight";
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => {
   if (!data?.post) {
@@ -101,7 +102,12 @@ export default function BlogPost() {
           </div>
 
           <div className="prose-custom">
-            <MarkdownContent content={post.content} />
+            <ReactMarkdown
+              rehypePlugins={[rehypeHighlight]}
+              className="prose prose-invert prose-cyan max-w-none"
+            >
+              {post.content}
+            </ReactMarkdown>
           </div>
         </article>
       </div>

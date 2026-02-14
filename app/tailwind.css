@@ -1,3 +1,5 @@
+@import 'highlight.js/styles/tokyo-night-dark.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -52,6 +54,3 @@
 ::-webkit-scrollbar-thumb:hover {
   @apply bg-cyan-500/70;
 }
-
-/* Highlight.js dark theme */
-@import 'highlight.js/styles/tokyo-night-dark.css';
